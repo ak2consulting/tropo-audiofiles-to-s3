@@ -21,9 +21,9 @@ AWS::S3::Base.establish_connection!(
 post '/post_audio_to_s3' do
   log.debug params
   begin
-    AWS::S3::S3Object.store(params['filename'][:filename], 
-                            File.open(params['filename'][:tempfile].path), 
-                            AWS_CONFIG['bucket_name'])
+    AWS::S3::S3Object.store(params['file_name'], 
+                                          File.open(params['filename'][:tempfile].path), 
+                                          AWS_CONFIG['bucket_name'])
   rescue => err
     log.error err
   end
